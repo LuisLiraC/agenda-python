@@ -1,6 +1,16 @@
 {% extends 'index.html' %}
 
+
 {% block body %}
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
   <form action="/add" method="post">
     <fieldset>
       <legend>Add new contact</legend>
@@ -14,10 +24,13 @@
       <label for="email">Email</label>
       <input type="text" name="email" id="email">
 
+      <label for="password">Admin password</label>
+      <input type="password" name="password" id="password">
+
       <button type="submit" name="button">Add contact</button>
     </fieldset>
   </form>
-
+  
   <p>
     <a href="/">Home</a>
   </p>

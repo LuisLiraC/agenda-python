@@ -1,5 +1,27 @@
 {% extends 'index.html' %}
 
 {% block body %}
+
+  {% for contact in contacts %}
+    <hr>
+    <div>
+      <h4>{{ contact.name }}</h4>
+      <div>
+        <p>Phone: {{ contact.phone }}</p>
+        <p>Email: {{ contact.email }}</p>
+        <form action="/delete/{{ contact.email }}" method="post">
+          <fieldset>
+            <legend>Delete contact</legend>
+            
+            <label for="password">Admin password</label>
+            <input type="password" name="password" id="password">
+      
+            <button type="submit" name="button">Delete contact</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <hr>
+  {% endfor %}
   <a href="/add">Add contact</a>
 {% endblock %}

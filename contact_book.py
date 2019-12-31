@@ -18,3 +18,10 @@ class ContactBook:
 
             for contact in self._contacts:
                 writer.writerow( (contact.name, contact.phone, contact.email) )
+
+    def delete(self, email):
+        for idx, contact in enumerate(self._contacts):
+            if contact.email.lower() == email.lower():
+                del self._contacts[idx]
+                self._save()
+                break
